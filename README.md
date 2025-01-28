@@ -80,6 +80,6 @@ Bu proje MIT lisansı altında lisanslanmıştır. Detaylı bilgi için `LICENSE
 
 ## 📞 İletişim
 
-ADINIZ SOYADINIZ - [@github_begumdoganay](https://github.com/github_begumdoganay)
+ADINIZ SOYADINIZ - BEGÜM DOĞANAY
 
-Proje Linki: [https://github.com/begumdoganay/sinif-tablosu](https://github.com/begumdoganay/sinif-tablosu)
+Proje Linki: https://github.com/begumdoganay/sinif_tablosu
