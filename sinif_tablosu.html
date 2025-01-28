@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sınıf Tablosu</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2.5em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .search-container {
+        margin-bottom: 20px;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 15px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #3498db;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      th:hover {
+        background-color: #2980b9;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      tr:hover {
+        background-color: #f5f5f5;
+        transform: scale(1.01);
+        transition: all 0.3s ease;
+      }
+
+      td {
+        transition: all 0.3s ease;
+      }
+
+      .not-yuksek {
+        color: #27ae60;
+        font-weight: bold;
+      }
+
+      .not-dusuk {
+        color: #c0392b;
+        font-weight: bold;
+      }
+
+      .sort-icon::after {
+        content: "↕️";
+        margin-left: 5px;
+        font-size: 12px;
+      }
+
+      @media (max-width: 768px) {
+        table {
+          display: block;
+          overflow-x: auto;
+        }
+
+        th,
+        td {
+          padding: 10px;
+          font-size: 14px;
+        }
+
+        h1 {
+          font-size: 1.8em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Sınıf Tablosu</h1>
+
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Tabloda ara..."
+        />
+      </div>
+
+      <table id="ogrenciTablosu">
+        <tr>
+          <th onclick="sortTable(0)">
+            Öğrenci Numarası<span class="sort-icon"></span>
+          </th>
+          <th onclick="sortTable(1)">Adı<span class="sort-icon"></span></th>
+          <th onclick="sortTable(2)">Soyadı<span class="sort-icon"></span></th>
+          <th onclick="sortTable(3)">Notu<span class="sort-icon"></span></th>
+          <th onclick="sortTable(4)">
+            Doğum Tarihi<span class="sort-icon"></span>
+          </th>
+          <th onclick="sortTable(5)">Bölüm<span class="sort-icon"></span></th>
+        </tr>
+        <tr>
+          <td>20240134</td>
+          <td>Bengisu</td>
+          <td>Karakaya</td>
+          <td class="not-yuksek">96</td>
+          <td>12.04.2003</td>
+          <td>Bilgisayar Mühendisliği</td>
+        </tr>
+        <tr>
+          <td>20240256</td>
+          <td>Deniz</td>
+          <td>Aydınlı</td>
+          <td>85</td>
+          <td>23.08.2002</td>
+          <td>Elektrik Elektronik Mühendisliği</td>
+        </tr>
+        <tr>
+          <td>20240378</td>
+          <td>Kaan</td>
+          <td>Ergün</td>
+          <td class="not-dusuk">65</td>
+          <td>15.11.2003</td>
+          <td>Makine Mühendisliği</td>
+        </tr>
+        <tr>
+          <td>20240445</td>
+          <td>İrem</td>
+          <td>Yılmazer</td>
+          <td class="not-yuksek">92</td>
+          <td>30.01.2002</td>
+          <td>Endüstri Mühendisliği</td>
+        </tr>
+        <tr>
+          <td>20240567</td>
+          <td>Mert</td>
+          <td>Öztunalı</td>
+          <td>88</td>
+          <td>05.06.2003</td>
+          <td>Yazılım Mühendisliği</td>
+        </tr>
+        <tr>
+          <td>20240689</td>
+          <td>Zehra</td>
+          <td>Demiroğlu</td>
+          <td class="not-yuksek">94</td>
+          <td>19.03.2002</td>
+          <td>Bilgisayar Mühendisliği</td>
+        </tr>
+        <tr>
+          <td>20240723</td>
+          <td>Ege</td>
+          <td>Aksoy</td>
+          <td class="not-dusuk">68</td>
+          <td>27.09.2003</td>
+          <td>Makine Mühendisliği</td>
+        </tr>
+        <tr>
+          <td>20240891</td>
+          <td>Defne</td>
+          <td>Kuzucu</td>
+          <td>87</td>
+          <td>08.12.2002</td>
+          <td>Endüstri Mühendisliği</td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      // Arama fonksiyonu
+      document
+        .getElementById("searchInput")
+        .addEventListener("keyup", function () {
+          let searchText = this.value.toLowerCase();
+          let table = document.getElementById("ogrenciTablosu");
+          let rows = table.getElementsByTagName("tr");
+
+          for (let i = 1; i < rows.length; i++) {
+            let show = false;
+            let cells = rows[i].getElementsByTagName("td");
+
+            for (let j = 0; j < cells.length; j++) {
+              let cell = cells[j];
+              if (cell.textContent.toLowerCase().indexOf(searchText) > -1) {
+                show = true;
+                break;
+              }
+            }
+
+            rows[i].style.display = show ? "" : "none";
+          }
+        });
+
+      // Sıralama fonksiyonu
+      function sortTable(n) {
+        let table = document.getElementById("ogrenciTablosu");
+        let switching = true;
+        let dir = "asc";
+        let switchcount = 0;
+
+        while (switching) {
+          switching = false;
+          let rows = table.rows;
+
+          for (let i = 1; i < rows.length - 1; i++) {
+            let shouldSwitch = false;
+            let x = rows[i].getElementsByTagName("td")[n];
+            let y = rows[i + 1].getElementsByTagName("td")[n];
+
+            // Not sütunu için sayısal karşılaştırma
+            if (n === 3) {
+              if (dir === "asc") {
+                if (Number(x.textContent) > Number(y.textContent)) {
+                  shouldSwitch = true;
+                  break;
+                }
+              } else {
+                if (Number(x.textContent) < Number(y.textContent)) {
+                  shouldSwitch = true;
+                  break;
+                }
+              }
+            } else {
+              if (dir === "asc") {
+                if (x.textContent.toLowerCase() > y.textContent.toLowerCase()) {
+                  shouldSwitch = true;
+                  break;
+                }
+              } else {
+                if (x.textContent.toLowerCase() < y.textContent.toLowerCase()) {
+                  shouldSwitch = true;
+                  break;
+                }
+              }
+            }
+          }
+
+          if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount++;
+          } else {
+            if (switchcount === 0 && dir === "asc") {
+              dir = "desc";
+              switching = true;
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
